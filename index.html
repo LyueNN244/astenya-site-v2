@@ -1237,6 +1237,51 @@
                                     style="font-size: 0.7rem; color:#888;">(Zorunlu Değil)</span></label>
                             <input type="text" id="join-discord-id" placeholder="Örn: 112768444...">
                         </div>
+                        
+                        <!-- Premium Karakter Özelleştirme Alanları -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; text-align: left;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label style="font-size: 0.85rem;"><i class="fa-solid fa-dna"></i> Irk</label>
+                                <select id="join-char-race" style="width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.6rem 0.8rem; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;">
+                                    <option value="Yarı-Elf">Yarı-Elf</option>
+                                    <option value="İnsan">İnsan</option>
+                                    <option value="Elf">Elf</option>
+                                    <option value="Ork">Ork</option>
+                                    <option value="Cüce">Cüce</option>
+                                    <option value="Kozmik">Kozmik</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label style="font-size: 0.85rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Sınıf</label>
+                                <select id="join-char-class" style="width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.6rem 0.8rem; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;">
+                                    <option value="Gölge Avcısı">Gölge Avcısı</option>
+                                    <option value="Savaşçı">Savaşçı</option>
+                                    <option value="Büyücü">Büyücü</option>
+                                    <option value="Suikastçı">Suikastçı</option>
+                                    <option value="Okçu">Okçu</option>
+                                    <option value="Şifacı">Şifacı</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label style="font-size: 0.85rem;"><i class="fa-solid fa-mountain-city"></i> Köken</label>
+                                <select id="join-char-origin" style="width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.6rem 0.8rem; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;">
+                                    <option value="Astenya Başkenti">Astenya Başkenti</option>
+                                    <option value="Querparta">Querparta</option>
+                                    <option value="Dragian">Dragian</option>
+                                    <option value="Azure Krallığı">Azure Krallığı</option>
+                                    <option value="Kadim Orman">Kadim Orman</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label style="font-size: 0.85rem;"><i class="fa-solid fa-venus-mars"></i> Cinsiyet</label>
+                                <select id="join-char-gender" style="width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.6rem 0.8rem; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;">
+                                    <option value="Erkek">Erkek</option>
+                                    <option value="Kadın">Kadın</option>
+                                    <option value="Belirtilmemiş">Belirtilmemiş</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <button type="submit" class="join-submit-btn">
                             <i class="fa-solid fa-fire-burner"></i> MACERAYA BAŞLA
                         </button>
@@ -1344,25 +1389,31 @@
                         </div>
                         <div class="info-item">
                             <span class="info-label">IRK:</span>
-                            <span class="info-value">Yarı-Elf</span>
+                            <span class="info-value" id="profile-info-race">Yarı-Elf</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">SINIF:</span>
-                            <span class="info-value">Gölge Avcısı</span>
+                            <span class="info-value" id="profile-info-class">Gölge Avcısı</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">KÖKEN:</span>
-                            <span class="info-value">Astenya Başkenti</span>
+                            <span class="info-value" id="profile-info-origin">Astenya Başkenti</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">CİNSİYET:</span>
-                            <span class="info-value">Erkek</span>
+                            <span class="info-value" id="profile-info-gender">Erkek</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">DURUM:</span>
-                            <span class="info-value active">Aktif Maceracı</span>
+                            <span class="info-value active" id="profile-info-status">Aktif Maceracı</span>
                         </div>
                     </div>
+                    <button onclick="openEditCharModal()"
+                        style="margin-top: 1.2rem; width: 100%; padding: 0.8rem; background: rgba(223, 183, 84, 0.1); color: var(--gold); border: 1px solid rgba(223, 183, 84, 0.3); border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.3s; font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 1px;"
+                        onmouseover="this.style.background='rgba(223, 183, 84, 0.25)'; this.style.boxShadow='0 0 10px rgba(223,183,84,0.2)'"
+                        onmouseout="this.style.background='rgba(223, 183, 84, 0.1)'; this.style.boxShadow='none'">
+                        <i class="fa-solid fa-user-pen"></i> Karakteri Düzenle
+                    </button>
                 </div>
 
                 <!-- Sağ Panel: Envanter & Başarımlar -->
@@ -1538,6 +1589,64 @@
             <div class="report-btns">
                 <button onclick="submitReport()" class="report-btn-confirm">GÖNDER</button>
                 <button onclick="closeReportModal()" class="report-btn-cancel">VAZGEÇ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Karakter Düzenleme Modalı -->
+    <div id="edit-char-modal-overlay" class="report-modal-overlay">
+        <div class="report-modal" style="width: 500px; padding: 2.5rem; text-align: left; background: #11141d; border: 1px solid var(--gold); border-radius: 24px; box-shadow: 0 0 60px rgba(0, 0, 0, 1), 0 0 20px rgba(223, 183, 84, 0.1);">
+            <h2 style="font-family: 'Cinzel', serif; color: var(--gold); text-align: center; margin-bottom: 1.5rem; letter-spacing: 2px; font-size: 1.8rem;">
+                <i class="fa-solid fa-user-gear"></i> KARAKTERİNİ DÜZENLE
+            </h2>
+            
+            <div style="margin-bottom: 1.2rem;">
+                <label style="display: block; font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-dna" style="color: var(--gold-dim); margin-right: 0.3rem;"></i> Irk Seçimi</label>
+                <select id="edit-char-race" style="width: 100%; background: rgba(0,0,0,0.6); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.8rem; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem;">
+                    <option value="Yarı-Elf">Yarı-Elf</option>
+                    <option value="İnsan">İnsan</option>
+                    <option value="Elf">Elf</option>
+                    <option value="Ork">Ork</option>
+                    <option value="Cüce">Cüce</option>
+                    <option value="Kozmik">Kozmik</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+                <label style="display: block; font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--gold-dim); margin-right: 0.3rem;"></i> Sınıf Seçimi</label>
+                <select id="edit-char-class" style="width: 100%; background: rgba(0,0,0,0.6); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.8rem; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem;">
+                    <option value="Gölge Avcısı">Gölge Avcısı</option>
+                    <option value="Savaşçı">Savaşçı</option>
+                    <option value="Büyücü">Büyücü</option>
+                    <option value="Suikastçı">Suikastçı</option>
+                    <option value="Okçu">Okçu</option>
+                    <option value="Şifacı">Şifacı</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+                <label style="display: block; font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-mountain-city" style="color: var(--gold-dim); margin-right: 0.3rem;"></i> Köken / Şehir</label>
+                <select id="edit-char-origin" style="width: 100%; background: rgba(0,0,0,0.6); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.8rem; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem;">
+                    <option value="Astenya Başkenti">Astenya Başkenti</option>
+                    <option value="Querparta">Querparta</option>
+                    <option value="Dragian">Dragian</option>
+                    <option value="Azure Krallığı">Azure Krallığı</option>
+                    <option value="Kadim Orman">Kadim Orman</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 1.8rem;">
+                <label style="display: block; font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 0.4rem; font-size: 0.9rem;"><i class="fa-solid fa-venus-mars" style="color: var(--gold-dim); margin-right: 0.3rem;"></i> Cinsiyet</label>
+                <select id="edit-char-gender" style="width: 100%; background: rgba(0,0,0,0.6); border: 1px solid rgba(223,183,84,0.3); color: #fff; padding: 0.8rem; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem;">
+                    <option value="Erkek">Erkek</option>
+                    <option value="Kadın">Kadın</option>
+                    <option value="Belirtilmemiş">Belirtilmemiş</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button onclick="saveCharacterEdit()" style="flex: 1; padding: 0.8rem; background: var(--gold); color: #000; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.95rem; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 15px var(--gold)'" onmouseout="this.style.boxShadow='none'">KAYDET</button>
+                <button onclick="closeEditCharModal()" style="flex: 1; padding: 0.8rem; background: rgba(255, 68, 68, 0.15); color: #ff4444; border: 1px solid rgba(255, 68, 68, 0.3); border-radius: 10px; font-weight: bold; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.95rem; transition: all 0.3s;" onmouseover="this.style.background='rgba(255, 68, 68, 0.3)'" onmouseout="this.style.background='rgba(255, 68, 68, 0.15)'">VAZGEÇ</button>
             </div>
         </div>
     </div>

@@ -3301,16 +3301,39 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = passwordInput.value;
             const discordId = discordInput ? discordInput.value.trim() : '';
 
+            // Seçilen Karakter Özelleştirmeleri
+            const raceInput = document.getElementById('join-char-race');
+            const classInput = document.getElementById('join-char-class');
+            const originInput = document.getElementById('join-char-origin');
+            const genderInput = document.getElementById('join-char-gender');
+
+            const race = raceInput ? raceInput.value : 'Yarı-Elf';
+            const charClass = classInput ? classInput.value : 'Gölge Avcısı';
+            const origin = originInput ? originInput.value : 'Astenya Başkenti';
+            const gender = genderInput ? genderInput.value : 'Erkek';
+
             let users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
             const existingUser = users.find(u => u.username === username);
 
             if (existingUser) {
                 // Giriş Denemesi
                 if (existingUser.password === password) {
+                    // Mevcut kullanıcıda eksik özellikler varsa varsayılan ata
+                    let updated = false;
                     if (discordId && existingUser.discordId !== discordId) {
                         existingUser.discordId = discordId;
+                        updated = true;
+                    }
+                    if (!existingUser.race) { existingUser.race = 'Yarı-Elf'; updated = true; }
+                    if (!existingUser.class) { existingUser.class = 'Gölge Avcısı'; updated = true; }
+                    if (!existingUser.origin) { existingUser.origin = 'Astenya Başkenti'; updated = true; }
+                    if (!existingUser.gender) { existingUser.gender = 'Erkek'; updated = true; }
+                    if (!existingUser.status) { existingUser.status = 'Aktif Maceracı'; updated = true; }
+
+                    if (updated) {
                         localStorage.setItem('asthenya_users', JSON.stringify(users));
                     }
+
                     localStorage.setItem('asthenya_logged_in_user', JSON.stringify(existingUser));
                     alert(`Hoş geldin, ${username}! Oturumun açıldı.`);
                     checkAdminAccess();
@@ -3325,7 +3348,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     password: password,
                     discordId: discordId,
                     role: 'ÜYE',
-                    race: 'İnsan',
+                    race: race,
+                    class: charClass,
+                    origin: origin,
+                    gender: gender,
+                    status: 'Aktif Maceracı',
                     level: 1,
                     id: 'user_' + Date.now()
                 };
@@ -4062,6 +4089,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const sessionStr = localStorage.getItem('asthenya_session');
         if (!sessionStr) return;
         const session = JSON.parse(sessionStr);
+
+        // Yerel veri tabanından kullanıcı nesnesini çek
+        const users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
+        const userObj = users.find(u => u.username === session.username) || {};
+
         const adminBtn = document.getElementById('admin-nav-btn');
 
         // Sadece yetkili rollere yönetim panelini göster
@@ -4085,6 +4117,26 @@ document.addEventListener("DOMContentLoaded", () => {
             profileInfoName.textContent = session.username;
         }
 
+        // Karakter Özelliklerini Güncelle
+        const profileInfoRace = document.getElementById('profile-info-race');
+        const profileInfoClass = document.getElementById('profile-info-class');
+        const profileInfoOrigin = document.getElementById('profile-info-origin');
+        const profileInfoGender = document.getElementById('profile-info-gender');
+        const profileInfoStatus = document.getElementById('profile-info-status');
+
+        if (profileInfoRace) profileInfoRace.textContent = userObj.race || 'Yarı-Elf';
+        if (profileInfoClass) profileInfoClass.textContent = userObj.class || 'Gölge Avcısı';
+        if (profileInfoOrigin) profileInfoOrigin.textContent = userObj.origin || 'Astenya Başkenti';
+        if (profileInfoGender) profileInfoGender.textContent = userObj.gender || 'Erkek';
+        if (profileInfoStatus) {
+            profileInfoStatus.textContent = userObj.status || 'Aktif Maceracı';
+            if (userObj.status === 'Yasaklı' || userObj.status === 'offline') {
+                profileInfoStatus.style.color = '#ff4444';
+            } else {
+                profileInfoStatus.style.color = '#2ecc71';
+            }
+        }
+
         // Diyardaki Hükmü (Rol) Güncellemesi
         const profileRoleDisplay = document.getElementById('profile-role-display');
         if (profileRoleDisplay && session.role) {
@@ -4099,9 +4151,75 @@ document.addEventListener("DOMContentLoaded", () => {
                 profileRoleDisplay.style.textShadow = '0 0 20px rgba(0, 229, 255, 0.8)';
             }
         }
-
-        // Hazine alanı arayüzden kaldırıldığı için DOM güncellemesi iptal edildi.
     }
+
+    // --- Karakter Özelliklerini Düzenleme Modalı ---
+    window.openEditCharModal = () => {
+        const sessionStr = localStorage.getItem('asthenya_session');
+        if (!sessionStr) return;
+        const session = JSON.parse(sessionStr);
+
+        const users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
+        const userObj = users.find(u => u.username === session.username);
+        if (!userObj) return;
+
+        const raceSelect = document.getElementById('edit-char-race');
+        const classSelect = document.getElementById('edit-char-class');
+        const originSelect = document.getElementById('edit-char-origin');
+        const genderSelect = document.getElementById('edit-char-gender');
+
+        if (raceSelect) raceSelect.value = userObj.race || 'Yarı-Elf';
+        if (classSelect) classSelect.value = userObj.class || 'Gölge Avcısı';
+        if (originSelect) originSelect.value = userObj.origin || 'Astenya Başkenti';
+        if (genderSelect) genderSelect.value = userObj.gender || 'Erkek';
+
+        const modal = document.getElementById('edit-char-modal-overlay');
+        if (modal) modal.style.display = 'flex';
+    };
+
+    window.closeEditCharModal = () => {
+        const modal = document.getElementById('edit-char-modal-overlay');
+        if (modal) modal.style.display = 'none';
+    };
+
+    window.saveCharacterEdit = () => {
+        const sessionStr = localStorage.getItem('asthenya_session');
+        if (!sessionStr) return;
+        const session = JSON.parse(sessionStr);
+
+        let users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
+        const idx = users.findIndex(u => u.username === session.username);
+        if (idx === -1) return;
+
+        const raceSelect = document.getElementById('edit-char-race');
+        const classSelect = document.getElementById('edit-char-class');
+        const originSelect = document.getElementById('edit-char-origin');
+        const genderSelect = document.getElementById('edit-char-gender');
+
+        const race = raceSelect ? raceSelect.value : 'Yarı-Elf';
+        const charClass = classSelect ? classSelect.value : 'Gölge Avcısı';
+        const origin = originSelect ? originSelect.value : 'Astenya Başkenti';
+        const gender = genderSelect ? genderSelect.value : 'Erkek';
+
+        // Verileri güncelle
+        users[idx].race = race;
+        users[idx].class = charClass;
+        users[idx].origin = origin;
+        users[idx].gender = gender;
+
+        localStorage.setItem('asthenya_users', JSON.stringify(users));
+
+        // Arayüzü tazele
+        updateUIPerUser();
+        window.closeEditCharModal();
+        
+        // Bildirim göster (toast)
+        if (typeof showToast === 'function') {
+            showToast('Karakter kaderiniz başarıyla güncellendi.');
+        } else {
+            alert('Karakteriniz başarıyla güncellendi!');
+        }
+    };
 
     // --- Çevrimcişi Takip Sistemi (Heartbeat) ---
     function setUserOnlineStatus(username, status) {
