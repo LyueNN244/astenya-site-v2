@@ -4085,21 +4085,63 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.reload();
     };
 
-    function updateUIPerUser() {
+    function getActiveUsername() {
         const sessionStr = localStorage.getItem('asthenya_session');
-        if (!sessionStr) return;
-        const session = JSON.parse(sessionStr);
+        if (sessionStr) {
+            try {
+                const s = JSON.parse(sessionStr);
+                if (s && s.username) return s.username;
+            } catch(e) {}
+        }
+        const loggedStr = localStorage.getItem('asthenya_logged_in_user');
+        if (loggedStr) {
+            try {
+                const l = JSON.parse(loggedStr);
+                if (l && l.username) return l.username;
+            } catch(e) {}
+        }
+        // Fallback: profil sayfasındaki isimden çek
+        const profileName = document.getElementById('profile-info-name') || document.getElementById('profile-hero-name');
+        if (profileName && profileName.textContent && profileName.textContent !== 'Efsanevi Gezgin' && profileName.textContent.trim() !== '') {
+            return profileName.textContent.trim();
+        }
+        return null;
+    }
+
+    function getActiveUserRole() {
+        const sessionStr = localStorage.getItem('asthenya_session');
+        if (sessionStr) {
+            try {
+                const s = JSON.parse(sessionStr);
+                if (s && s.role) return s.role;
+            } catch(e) {}
+        }
+        const loggedStr = localStorage.getItem('asthenya_logged_in_user');
+        if (loggedStr) {
+            try {
+                const l = JSON.parse(loggedStr);
+                if (l && l.role) return l.role;
+            } catch(e) {}
+        }
+        return 'ÜYE';
+    }
+
+    function updateUIPerUser() {
+        const username = getActiveUsername();
+        if (!username) return;
+
+        const role = getActiveUserRole();
 
         // Yerel veri tabanından kullanıcı nesnesini çek
         const users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
-        const userObj = users.find(u => u.username === session.username) || {};
+        const userObj = users.find(u => u.username === username) || {};
 
         const adminBtn = document.getElementById('admin-nav-btn');
 
         // Sadece yetkili rollere yönetim panelini göster
         const authorizedRoles = ['KURUCU', 'DEVELOPER', 'ADMİN', 'ADMIN'];
         if (adminBtn) {
-            if (authorizedRoles.includes(session.role)) {
+            if (authorizedRoles.includes(role)) {
                 adminBtn.style.display = 'flex';
             } else {
                 adminBtn.style.display = 'none';
@@ -4111,10 +4153,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const profileInfoName = document.getElementById('profile-info-name');
 
         if (profileHeroName) {
-            profileHeroName.textContent = session.username;
+            profileHeroName.textContent = username;
         }
         if (profileInfoName) {
-            profileInfoName.textContent = session.username;
+            profileInfoName.textContent = username;
         }
 
         // Karakter Özelliklerini Güncelle
@@ -4139,14 +4181,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Diyardaki Hükmü (Rol) Güncellemesi
         const profileRoleDisplay = document.getElementById('profile-role-display');
-        if (profileRoleDisplay && session.role) {
-            profileRoleDisplay.textContent = session.role;
+        if (profileRoleDisplay && role) {
+            profileRoleDisplay.textContent = role;
 
             // Role göre özel renk/efekt eklenebilir
-            if (session.role === 'KURUCU') {
+            if (role === 'KURUCU') {
                 profileRoleDisplay.style.color = '#ff4444';
                 profileRoleDisplay.style.textShadow = '0 0 20px rgba(255, 68, 68, 0.8)';
-            } else if (session.role === 'DEVELOPER') {
+            } else if (role === 'DEVELOPER') {
                 profileRoleDisplay.style.color = '#00e5ff';
                 profileRoleDisplay.style.textShadow = '0 0 20px rgba(0, 229, 255, 0.8)';
             }
@@ -4155,13 +4197,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Karakter Özelliklerini Düzenleme Modalı ---
     window.openEditCharModal = () => {
-        const sessionStr = localStorage.getItem('asthenya_session');
-        if (!sessionStr) return;
-        const session = JSON.parse(sessionStr);
+        const username = getActiveUsername();
+        if (!username) {
+            alert('Karakter bilgilerini düzenlemek için lütfen giriş yapın.');
+            return;
+        }
 
         const users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
-        const userObj = users.find(u => u.username === session.username);
-        if (!userObj) return;
+        const userObj = users.find(u => u.username === username);
+        if (!userObj) {
+            alert('Karakteriniz veri tabanında bulunamadı.');
+            return;
+        }
 
         const raceSelect = document.getElementById('edit-char-race');
         const classSelect = document.getElementById('edit-char-class');
@@ -4183,12 +4230,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.saveCharacterEdit = () => {
-        const sessionStr = localStorage.getItem('asthenya_session');
-        if (!sessionStr) return;
-        const session = JSON.parse(sessionStr);
+        const username = getActiveUsername();
+        if (!username) return;
 
         let users = JSON.parse(localStorage.getItem('asthenya_users') || '[]');
-        const idx = users.findIndex(u => u.username === session.username);
+        const idx = users.findIndex(u => u.username === username);
         if (idx === -1) return;
 
         const raceSelect = document.getElementById('edit-char-race');
@@ -4208,6 +4254,35 @@ document.addEventListener("DOMContentLoaded", () => {
         users[idx].gender = gender;
 
         localStorage.setItem('asthenya_users', JSON.stringify(users));
+
+        // Eğer logged_in_user veya session bu kullanıcı ise onun da verisini güncelle
+        const sessionStr = localStorage.getItem('asthenya_session');
+        if (sessionStr) {
+            try {
+                const session = JSON.parse(sessionStr);
+                if (session.username === username) {
+                    session.race = race;
+                    session.class = charClass;
+                    session.origin = origin;
+                    session.gender = gender;
+                    localStorage.setItem('asthenya_session', JSON.stringify(session));
+                }
+            } catch(e) {}
+        }
+        
+        const loggedStr = localStorage.getItem('asthenya_logged_in_user');
+        if (loggedStr) {
+            try {
+                const logged = JSON.parse(loggedStr);
+                if (logged.username === username) {
+                    logged.race = race;
+                    logged.class = charClass;
+                    logged.origin = origin;
+                    logged.gender = gender;
+                    localStorage.setItem('asthenya_logged_in_user', JSON.stringify(logged));
+                }
+            } catch(e) {}
+        }
 
         // Arayüzü tazele
         updateUIPerUser();
