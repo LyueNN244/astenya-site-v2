@@ -3265,6 +3265,27 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             localStorage.setItem('asthenya_users', JSON.stringify(users));
         }
+
+        // LyueNN Kurucu Yetki Güncellemesi
+        const lyuennUser = users.find(u => u.username === 'LyueNN');
+        if (lyuennUser && lyuennUser.role !== 'KURUCU') {
+            lyuennUser.role = 'KURUCU';
+            localStorage.setItem('asthenya_users', JSON.stringify(users));
+        }
+
+        // Eğer aktif oturumda LyueNN varsa, onun da rolünü KURUCU yap
+        const sessionStr = localStorage.getItem('asthenya_session');
+        if (sessionStr) {
+            try {
+                const session = JSON.parse(sessionStr);
+                if (session.username === 'LyueNN' && session.role !== 'KURUCU') {
+                    session.role = 'KURUCU';
+                    localStorage.setItem('asthenya_session', JSON.stringify(session));
+                }
+            } catch (e) {
+                console.error('Session parsing error:', e);
+            }
+        }
     }
 
     // --- Giriş / Kayıt Mantığı ---

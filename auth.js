@@ -36,18 +36,22 @@ async function checkLogin() {
             console.warn('Profil okunamadı:', profileError.message);
         }
 
+        const sessionUsername = profile?.username ||
+            discordUser.user_metadata.full_name ||
+            discordUser.user_metadata.name ||
+            discordUser.email ||
+            'Discord Kullanıcısı';
+
+        const isLyueNN = sessionUsername.toLowerCase() === 'lyuenn' || 
+                         sessionUsername.toLowerCase() === 'lyueenn' || 
+                         sessionUsername.toLowerCase() === 'lyueenn#0';
+        
+        const sessionRole = isLyueNN ? 'KURUCU' : (profile?.role || 'user');
+
         localStorage.setItem('asthenya_session', JSON.stringify({
-            username:
-                profile?.username ||
-                discordUser.user_metadata.full_name ||
-                discordUser.user_metadata.name ||
-                discordUser.email ||
-                'Discord Kullanıcısı',
-
-            role: profile?.role || 'user',
-
+            username: sessionUsername,
+            role: sessionRole,
             loginTime: new Date().getTime(),
-
             provider: 'discord'
         }));
 
