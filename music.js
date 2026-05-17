@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(217, 119, 6, 0.4)",
             colorGlow: "rgba(217, 119, 6, 0.25)",
             colorBgGlow: "rgba(217, 119, 6, 0.12)",
-            img: "img/Tanrılar/Casemir.png",
+            img: "img/tanrilar/casemir.png",
             story: "Asthenya evreninin en ücra ve vahşi köşelerinde gezinen tüm canavarların, efsanevi yaratıkların ve boyun eğmez canlıların mutlak efendisi Cassemır De Von Capllan. Onun kükremesi diyarın en derin mağaralarında yankılanır. Yaratıklara hükmetmek ve vahşi doğanın ilkel gücünü kullanmak isteyenler onun mührüne sığınır.",
             blessing: "Vahşi Hüküm & Yaratıkların Gazabı",
             effectType: "effect-casemir"
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(16, 185, 129, 0.4)",
             colorGlow: "rgba(16, 185, 129, 0.25)",
             colorBgGlow: "rgba(16, 185, 129, 0.12)",
-            img: "img/Tanrılar/Emparos.png",
+            img: "img/tanrilar/emparos.png",
             story: "Kadim elf ırkının yaratıcısı ve koruyucusu Emparos. Kadim ormanların zarafeti, keskin okçuluk yetenekleri ve doğa büyüsünün incelikleri onun lütfundan gelir. Elfler, Emparos'un bilgeliği sayesinde asırlardır diyarın en köklü ve zarif uygarlıklarından birini sürdürmektedir.",
             blessing: "Elflerin Zarafeti & Kadim Orman Büyüsü",
             effectType: "effect-emparos"
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(239, 68, 68, 0.4)",
             colorGlow: "rgba(239, 68, 68, 0.25)",
             colorBgGlow: "rgba(239, 68, 68, 0.12)",
-            img: "img/Tanrılar/Leopolde.png",
+            img: "img/tanrilar/leopolde.png",
             story: "Var olan her şeyin bir gün son bulacağını hatırlatan mutlak kaos ve yıkım gücü Leopolde. Onun geçtiği yerlerde krallıklar küle, dağlar toza dönüşür. Evrenin dengesini sağlamak için eskiyi yok edip yeniye yer açan acımasız ama zorunlu bir kozmik kuvvettir.",
             blessing: "Mutlak Yıkım & Küllerin Gazabı",
             effectType: "effect-leopolde"
@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(139, 92, 246, 0.4)",
             colorGlow: "rgba(139, 92, 246, 0.25)",
             colorBgGlow: "rgba(139, 92, 246, 0.12)",
-            img: "img/Tanrılar/Magiena.png",
+            img: "img/tanrilar/magiena.png",
             story: "Tanrısallığa kendi iradesi ve eşsiz arkana bilgisiyle ulaşmış, diyardaki tüm büyü akıntılarına hükmeden Magıena. O, sıradan büyücülerin hayal bile edemeyeceği yasaklı formülleri ve boyut kapılarını parmaklarının ucuyla kontrol eder. Asthenya'daki tüm büyü loncaları onun adını saygıyla anar.",
             blessing: "Sınırsız Arkana & Boyutların Hakimi",
             effectType: "effect-magiena"
@@ -441,7 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(220, 38, 38, 0.4)",
             colorGlow: "rgba(220, 38, 38, 0.25)",
             colorBgGlow: "rgba(220, 38, 38, 0.12)",
-            img: "img/Tanrılar/Malafez.png",
+            img: "img/tanrilar/malafez.png",
             story: "Gökyüzünü kaplayan devasa kanatları ve diyarın en sert metallerini bile eriten nefesiyle Malafez, tüm ejderha soylarının anasıdır. Göğün en yüksek zirvelerinde taht kurmuştur. Onun kanını taşıyan ejderhalar ve ejderha binicileri, göklerin tartışmasız hakimleridir.",
             blessing: "Ejderha Nefesi & Göklerin Öfkesi",
             effectType: "effect-malafez"
@@ -453,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(6, 182, 212, 0.4)",
             colorGlow: "rgba(6, 182, 212, 0.25)",
             colorBgGlow: "rgba(6, 182, 212, 0.12)",
-            img: "img/Tanrılar/Merinos.png",
+            img: "img/tanrilar/merinos.png",
             story: "Geçmişin, şimdinin ve geleceğin ipliklerini elinde tutan Merinos. Onun gözleri zamanın ötesini görür; krallıkların çöküşünü ve kahramanların doğuşunu asırlar öncesinden fısıldar. Kahinler ve zaman bükücüler, kaderin ağlarını anlamak için Merinos'un vizyonlarına sığınır.",
             blessing: "Zamanın Gözü & Kusursuz Kehanet",
             effectType: "effect-merinos"
@@ -465,7 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(236, 72, 153, 0.4)",
             colorGlow: "rgba(236, 72, 153, 0.25)",
             colorBgGlow: "rgba(236, 72, 153, 0.12)",
-            img: "img/Tanrılar/Miu.png",
+            img: "img/tanrilar/miu.png",
             story: "Uzayın sonsuz boşluğunda, galaksiler ve yıldız sistemleri arasında dans eden Miu. Asthenya göğündeki kayan yıldızlar ve takımyıldızları onun ayak izleridir. Kozmik enerjileri ve göksel navigasyonu kullanan gezginler, Miu'nun yıldız ışığıyla yollarını bulur.",
             blessing: "Yıldız Tozu & Galaktik Seyahat",
             effectType: "effect-miu"
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(100, 116, 139, 0.4)",
             colorGlow: "rgba(100, 116, 139, 0.25)",
             colorBgGlow: "rgba(100, 116, 139, 0.12)",
-            img: "img/Tanrılar/Osentha.png",
+            img: "img/tanrilar/osentha.png",
             story: "Toplumdan dışlanmış, sürgüne gönderilmiş, karanlık sokaklarda kaderine terk edilmiş tüm fani ruhların sığınağı Osentha. O, diyarın unuttuğu ve hor gördüğü kimselere kucak açar, onlara gölgelerin içinde yepyeni bir güç ve yaşama amacı bahşeder.",
             blessing: "Sürgünlerin Sığınağı & Gölgelerin Şefkati",
             effectType: "effect-osentha"
@@ -489,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(14, 165, 233, 0.4)",
             colorGlow: "rgba(14, 165, 233, 0.25)",
             colorBgGlow: "rgba(14, 165, 233, 0.12)",
-            img: "img/Tanrılar/Sima.png",
+            img: "img/tanrilar/sima.png",
             story: "Evrenin işleyişini, simyanın temel kanunlarını ve mekanik düzeni yöneten Simha. Büyünün bile mantıksal bir formüle dayandığını savunan alimlerin, mucitlerin ve mühendislerin rehberidir. Asthenya'daki en büyük icatlar ve teknolojik sıçramalar onun ilhamıyla gerçekleşir.",
             blessing: "Kusursuz Formül & İnovasyon Işığı",
             effectType: "effect-simha"
@@ -501,7 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(249, 115, 22, 0.4)",
             colorGlow: "rgba(249, 115, 22, 0.25)",
             colorBgGlow: "rgba(249, 115, 22, 0.12)",
-            img: "img/Tanrılar/Thorgin.png",
+            img: "img/tanrilar/thorgin.png",
             story: "Asthenya tarihinin ilk ve en kudretli efsanevi silahlarını döven ulu zanaatkar Thorgrın. Onun örsünden çıkan her kılıç bir efsaneye, her kalkan aşılmaz bir duvara dönüşmüştür. Diyarın en usta demircileri, onun kutsal çekicinin ritmini yakalamak için ömür harcar.",
             blessing: "Efsanevi Örs & Usta Zanaatkarlık",
             effectType: "effect-thorgrin"
@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(234, 179, 8, 0.4)",
             colorGlow: "rgba(234, 179, 8, 0.25)",
             colorBgGlow: "rgba(234, 179, 8, 0.12)",
-            img: "img/Tanrılar/Vespadora.png",
+            img: "img/tanrilar/vespadora.png",
             story: "Hiçliğin ortasında ilk kıvılcımı çakan, gezegenlere şekil veren ve yaşama ilk nefesi üfleyen ulu Yaratılış Tanrıçası Vespadora. Asthenya evrenindeki tüm güzelliklerin, dağların, nehirlerin ve canlılığın mimarıdır. Onun lütfu, yokluktan varlık yaratma kudretidir.",
             blessing: "Yaratılış Kıvılcımı & İlk Nefes",
             effectType: "effect-vespadora"
@@ -525,7 +525,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(185, 28, 28, 0.4)",
             colorGlow: "rgba(185, 28, 28, 0.25)",
             colorBgGlow: "rgba(185, 28, 28, 0.12)",
-            img: "img/Tanrılar/Warnar.png",
+            img: "img/tanrilar/warnar.png",
             story: "Savaş meydanlarının mutlak hakimi, orduların önünde korkusuzca yürüyen Warnar. Kılıç şıngırtıları, zafer naraları ve taktiksel dehanın tanrısıdır. Adaleti ve onuru korumak için kılıç çeken her savaşçının bileğine Warnar'ın yenilmez kudreti dolar.",
             blessing: "Savaşın Gazabı & Yenilmez Taktik",
             effectType: "effect-warnar"
@@ -537,7 +537,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(148, 163, 184, 0.4)",
             colorGlow: "rgba(148, 163, 184, 0.25)",
             colorBgGlow: "rgba(148, 163, 184, 0.12)",
-            img: "img/Tanrılar/X.png",
+            img: "img/tanrilar/x.png",
             story: "Asthenya evreninin en derin sırrı. Kadim parşömenlerde, taş kitabelerde veya tanrıların hafızasında bile onun hakkında tek bir kelime bilgi bulunmaz. Sadece 'X' mührüyle bilinen bu varlık, evrenin açıklanamayan ve asla ulaşılamayan karanlık yüzüdür.",
             blessing: "??? Bilinmeyen Kudret",
             effectType: "effect-x"
@@ -549,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
             colorDim: "rgba(244, 63, 94, 0.4)",
             colorGlow: "rgba(244, 63, 94, 0.25)",
             colorBgGlow: "rgba(244, 63, 94, 0.12)",
-            img: "img/Tanrılar/Xanax.png",
+            img: "img/tanrilar/xanax.png",
             story: "Tüm evrenin kalp atışını, canlıların damarlarında akan yaşam enerjisini ve varoluşun sonsuz döngüsünü koruyan Xanax. O, doğumun, büyümenin ve hayatta kalma iradesinin kutsal kaynağıdır. Şifacılar ve yaşam koruyucuları onun sonsuz sevgisinden beslenir.",
             blessing: "Varoluş Özü & Sonsuz Yaşam Işığı",
             effectType: "effect-xanax"
@@ -3142,7 +3142,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Sonsuz Karanlık ve Volkanik Kaleler Diyarı",
             lore: "Kıtanın kuzeybatısındaki sarp volkanik dağların eteklerine kurulan Bladion, güneşin nadiren yüzünü gösterdiği efsanevi bir gece krallığıdır. Lav nehirleriyle korunan devasa kalelerinde, karanlık büyülerde ustalaşmış gece şövalyeleri ve ateş rünleri işleyen efsanevi demirciler hüküm sürer.",
             icon: "fa-moon",
-            image: "img/map/Bladion Gece Toprakları.png",
+            image: "img/map/bladion-gece-topraklari.png",
             x: 19, y: 23.5
         },
         meclis: {
@@ -3150,7 +3150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Büyünün Kalbi ve Kristal Kuleler",
             lore: "Asthenya kıtasının en yüksek zirvesinde yer alan bu ihtişamlı mavi kristal şehir, kıtanın büyü akışını denetleyen On İki Kadim Başbüyücü'nün konsey merkezidir. Göklerden süzülen saf mana nehirleri, buradaki efsanevi kuleleri ve rünik kütüphaneleri sonsuz bir enerjiyle besler.",
             icon: "fa-wand-magic-sparkles",
-            image: "img/map/On İki Baş Büyücü.png",
+            image: "img/map/buyucu-kulesi.png",
             x: 48.5, y: 23.5
         },
         yikim: {
@@ -3158,7 +3158,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Kadim Lanetler ve Terk Edilmiş Tapınaklar",
             lore: "Kıtanın kuzeydoğusunda, asırlık dev ağaçların gölgesinde gizlenen Yıkım Ormanı, efsaneye göre kadim bir tanrının hapsedildiği devasa mahzene ev sahipliği yapar. Sadece en cesur ve elit maceracılar, buradaki lanetli zindanlara girip efsanevi titan ganimetlerini arama cesaretini gösterebilir.",
             icon: "fa-skull-crossbones",
-            image: "img/map/Yıkım Mahzeni.png",
+            image: "img/map/yikim-mahzeni.png",
             x: 81, y: 23.5
         },
         azure: {
@@ -3166,7 +3166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Mavi Çatılı Saraylar ve Şövalyeler Diyarı",
             lore: "Masal kitaplarından fırlamış gibi duran masmavi kuleleri ve görkemli şövalye birlikleriyle Azure Krallığı, kıtanın en büyük düzen ve adalet savunucusudur. Nehir boylarına kurulan verimli toprakları ve efsanevi şövalye akademileriyle kıtanın askeri gücünün belkemiğini oluşturur.",
             icon: "fa-shield-halved",
-            image: "img/map/azure krallığı.png",
+            image: "img/map/azure-kralligi.png",
             x: 13, y: 53.5
         },
         lemartha: {
@@ -3174,7 +3174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Kıtanın Altın Kalbi ve Işık Çemberi",
             lore: "Asthenya kıtasının tam merkezinde, iç içe geçmiş devasa dairesel surlarla korunan Lemartha, kıtanın kutsal başkentidir. Merkezindeki devasa Altın Saray, tanrıların yeryüzündeki gölgesi olarak kabul edilir. Kıtanın en büyük ticaret yolları ve diplomatik görüşmeleri bu efsanevi çemberde gerçekleşir.",
             icon: "fa-crown",
-            image: "img/map/Lemartha Kutsal Krallık.png",
+            image: "img/map/lemartha-kutsal-krallik.png",
             x: 48.5, y: 65.5
         },
         querparta: {
@@ -3190,7 +3190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Ejder Kalesi ve Ateşin Hükümdarları",
             lore: "Güneyin kavurucu lav denizlerinin ortasında yükselen Dragian, devasa ejderhaların evcilleştirildiği ve eğitildiği volkanik bir kaledir. Kalenin zirvesindeki Efsanevi Kızıl Ejder, şehri yaklaşan tüm tehlikelere karşı korur. Ejderha derisi zırhlar sadece bu kalenin usta demircileri tarafından dövülebilir.",
             icon: "fa-dragon",
-            image: "img/map/Dragian.png",
+            image: "img/map/dragian.png",
             x: 55.5, y: 94.5
         },
         espanyan: {
@@ -3198,7 +3198,7 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle: "Kutsal Zümrüt Pınarı ve Kadim Elfler",
             lore: "Kıtanın güneydoğusunu saran turkuaz parıltılı Yaşam Ormanı Espanyan, doğanın ve yaşam enerjisinin en saf halini barındırır. Ormanın merkezindeki Kutsal Yaşam Sunağı, ölümcül yaraları iyileştiren ve efsanevi şifa iksirlerinin özünü oluşturan kutsal sularla doludur. Buradaki kadim elfler kıtanın en büyük bilgeleridir.",
             icon: "fa-tree",
-            image: "img/map/Elf.png",
+            image: "img/map/elf.png",
             x: 85, y: 78.5
         }
     };
